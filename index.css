@@ -1,0 +1,86 @@
+body {
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.solar-system {
+  position: relative;
+  width: 400px;
+  height: 400px;
+}
+
+/* Sun */
+.sun {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle at 30% 30%, #fff, #ff0, #f80);
+  border-radius: 50%;
+  box-shadow: 0 0 50px #f90;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+/* Orbit Path */
+.orbit {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Planet */
+.planet {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: radial-gradient(circle at 30% 30%, #5af, #26a);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: orbit 10s linear infinite;
+}
+
+@keyframes orbit {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) translateX(150px) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) translateX(150px)
+      rotate(-360deg);
+  }
+}
+
+/* Glow effect for planet */
+.planet::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #5af;
+  animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 5px #5af;
+  }
+  100% {
+    box-shadow: 0 0 15px #5af;
+  }
+}
